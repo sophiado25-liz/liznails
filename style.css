@@ -85,28 +85,30 @@ body, html {
     height: auto;  /* Để chiều cao tự động điều chỉnh */
 }
   .logo {
-    position: absolute;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .logo img {
-    max-width: 150px;  /* Chỉ cho logo rộng tối đa 150px */
-    height: auto;      /* Tự điều chỉnh chiều cao theo tỷ lệ ảnh */
-    display: block;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-      @media screen and (max-width: 768px) {
+.logo img {
+  width: 120px;             /* Kích thước vừa phải trên desktop */
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: block;
+}
+
+/* Responsive cho điện thoại */
+@media screen and (max-width: 768px) {
   .logo img {
-    max-width: 100px;
+    width: 90px;
+    height: 90px;
   }
-  }
+}
+
 
 h2 {
     font-family: Playlist Script;
