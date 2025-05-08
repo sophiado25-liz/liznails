@@ -92,12 +92,20 @@ body, html {
   }
   
   .logo img {
+    max-width: 150px;  /* Chỉ cho logo rộng tối đa 150px */
+    height: auto;      /* Tự điều chỉnh chiều cao theo tỷ lệ ảnh */
+    display: block;
     width: 100px;
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  
+
+      @media screen and (max-width: 768px) {
+  .logo img {
+    max-width: 100px;
+  }
   }
 
 h2 {
