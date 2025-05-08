@@ -80,6 +80,10 @@ body, html {
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
+.card img {
+    width: 100%;  /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng của card */
+    height: auto;  /* Để chiều cao tự động điều chỉnh */
+}
   .logo {
     position: absolute;
     top: -50px;
