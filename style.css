@@ -1,0 +1,129 @@
+@font-face {
+    src: url(Playlist\ Script.otf);
+    font-family: 'Playlist Script';
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Montserrat Variable' ;
+    src: url(Montserrat-VariableFont_wght.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat Light' ;
+    src: url(Montserrat-Light.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+    z-index: -1;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 60px 20px 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .logo {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+h2 {
+    font-family: Playlist Script;
+    font-size: 1.5rem;
+    color: #2e4d28;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+p {
+    font-family: Montserrat Variable;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.links .btn {
+    display: block;
+    margin: 10px auto;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100%;
+    max-width: 300px;
+    transition: 0.3s;
+}
+
+.pink {
+    font-family: Playlist Script;
+    font-size: 1.5rem;
+    background-color: white;
+    color: #2e4d28;
+}
+
+.fb {
+    font-family: Montserrat Light;
+    background-color: white;
+    color: black;
+}
+
+
+.ig {
+    font-family: Montserrat Light;
+    background-color: white;
+    color: black;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
