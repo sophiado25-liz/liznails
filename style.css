@@ -49,8 +49,17 @@ body, html {
     padding: 20px;
 }
 
+/* Sử dụng Flexbox để căn chỉnh */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .card {
     background-color: rgba(255, 255, 255, 0.85);
+    flex: 1 1 300px;
+    margin: 10px;
     padding: 60px 20px 30px;
     width: 90%;
     max-width: 400px;
