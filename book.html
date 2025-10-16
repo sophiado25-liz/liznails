@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liz Nails | Book Appointment</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="book.css">
+<meta charset="UTF-8">
+<title>Liz Nails Booking</title>
+<link rel="stylesheet" href="book.css">
+<script src="booking.js" defer></script>
 </head>
 <body>
-  <div class="booking-container">
-    <h2>Book Your Appointment</h2>
-    <form id="booking-form">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required>
-      <select name="service" required>
-        <option value="">Select Service</option>
-        <option value="Manicure">Manicure</option>
-        <option value="Pedicure">Pedicure</option>
-        <option value="Nail Extension">Nail Extension</option>
-      </select>
-      <input type="date" name="date" required>
-      <input type="time" name="time" required>
-      <textarea name="note" placeholder="Note (optional)"></textarea>
-      <button type="submit">Book Now</button>
-    </form>
-    <p id="msg"></p>
+<div class="liz-booking" id="liz-booking">
+  <h3>Book an Appointment — Liz Nails</h3>
+
+  <label>Select Services (multiple selections allowed):</label>
+  <div class="liz-checkboxes" id="service-list"></div>
+
+  <div class="liz-row">
+    <div class="liz-field">
+      <label>Full Name</label>
+      <input type="text" id="client-name" placeholder="John Doe">
+    </div>
+    <div class="liz-field">
+      <label>Phone Number</label>
+      <input type="tel" id="client-phone" placeholder="+1 416 ...">
+    </div>
   </div>
 
-  <script>
-    const form = document.getElementById('booking-form');
-    const msg = document.getElementById('msg');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw-GWuGj4iMXtIwKjb9txNLv8VKvH-7IM9nTH6mmbylpb9-OuhZ3LtHJL6voroanbTk/exec'; // Thay bằng link Web App Google Script
+  <div class="liz-row">
+    <div class="liz-field">
+      <label>Email</label>
+      <input type="email" id="client-email" placeholder="you@example.com">
+    </div>
+    <div class="liz-field">
+      <label>Number of People</label>
+      <input type="number" id="client-count" value="1" min="1">
+    </div>
+  </div>
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          msg.textContent = "Appointment booked! We'll contact you soon 💕";
-          form.reset();
-        })
-        .catch(error => {
-          console.error('Error!', error.message);
-          msg.textContent = "Something went wrong. Please try again!";
-        });
-    });
-  </script>
+  <div class="liz-row">
+    <div class="liz-field">
+      <label>Date & Time</label>
+      <input type="datetime-local" id="appointment-datetime">
+    </div>
+    <div class="liz-field">
+      <label>Notes / Requests</label>
+      <textarea id="client-note" placeholder="French + GelX, allergies..."></textarea>
+    </div>
+  </div>
+
+  <button id="liz-submit">Book Appointment</button>
+  <div id="liz-status"></div>
+  <div id="liz-summary" style="display:none"></div>
+</div>
 </body>
 </html>
