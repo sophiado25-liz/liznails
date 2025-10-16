@@ -1,37 +1,7 @@
-.booking-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #fff0f5;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  text-align: center;
-}
-
-.booking-container h2 {
-  margin-bottom: 20px;
-  color: #d63384;
-}
-
-.booking-container input,
-.booking-container select,
-.booking-container textarea,
-.booking-container button {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-.booking-container button {
-  background: #d63384;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.booking-container button:hover {
-  background: #c12375;
-}
+.liz-booking { max-width: 640px; margin: 20px auto; font-family: Arial, sans-serif; }
+.liz-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.liz-field { flex: 1; min-width: 180px; }
+.liz-checkboxes { display: flex; flex-direction: column; gap: 6px; padding: 6px; border: 1px solid #ddd; border-radius: 6px; max-height: 220px; overflow:auto; }
+input, textarea { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ddd; }
+button#liz-submit { padding: 10px 14px; border-radius: 6px; cursor: pointer; }
+#liz-status { margin-top: 10px; font-size: 14px; }
