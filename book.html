@@ -1,54 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Liz Nails Booking</title>
-<link rel="stylesheet" href="book.css">
-<script src="booking.js" defer></script>
-</head>
-<body>
-<div class="liz-booking" id="liz-booking">
-  <h3>Book an Appointment — Liz Nails</h3>
+<form id="bookingForm">
+  <input name="name" placeholder="Full Name" required>
+  <input name="phone" placeholder="Phone Number" required>
+  <input name="email" placeholder="Email" required>
+  
+  <label>Services</label>
+  <select name="services" multiple>
+    <option>Manicure</option>
+    <option>Pedicure</option>
+    <option>Gel Nails</option>
+    <option>Nail Art</option>
+  </select>
 
-  <label>Select Services (multiple selections allowed):</label>
-  <div class="liz-checkboxes" id="service-list"></div>
+  <input name="people" type="number" min="1" placeholder="Number of People" required>
+  <input name="date" type="date" required>
+  <input name="time" type="time" required>
+  <textarea name="notes" placeholder="Notes"></textarea>
 
-  <div class="liz-row">
-    <div class="liz-field">
-      <label>Full Name</label>
-      <input type="text" id="client-name" placeholder="John Doe">
-    </div>
-    <div class="liz-field">
-      <label>Phone Number</label>
-      <input type="tel" id="client-phone" placeholder="+1 416 ...">
-    </div>
-  </div>
+  <button>Book Appointment</button>
+</form>
 
-  <div class="liz-row">
-    <div class="liz-field">
-      <label>Email</label>
-      <input type="email" id="client-email" placeholder="you@example.com">
-    </div>
-    <div class="liz-field">
-      <label>Number of People</label>
-      <input type="number" id="client-count" value="1" min="1">
-    </div>
-  </div>
+<p id="msg"></p>
 
-  <div class="liz-row">
-    <div class="liz-field">
-      <label>Date & Time</label>
-      <input type="datetime-local" id="appointment-datetime">
-    </div>
-    <div class="liz-field">
-      <label>Notes / Requests</label>
-      <textarea id="client-note" placeholder="French + GelX, allergies..."></textarea>
-    </div>
-  </div>
+<script>
+document.getElementById("bookingForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target;
+  const data = {
+    name: f.name.value,
+    phone: f.phone.value,
+    email: f.email.value,
+    services: Array.from(f.services.selectedOptions).map(o => o.value),
+    people: f.people.value,
+    date: f.date.value,
+    time: f.time.value,
+    notes: f.notes.value
+  };
 
-  <button id="liz-submit">Book Appointment</button>
-  <div id="liz-status"></div>
-  <div id="liz-summary" style="display:none"></div>
-</div>
-</body>
-</html>
+  const res = await fetch("YOUR_CLOUD_FUNCTION_URL", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  const r = await res.json();
+  document.getElementById("msg").textContent = r.message;
+});
+</script>
