@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment | Liz Nails</title>
+  <link rel="stylesheet" href="style.css"> <!-- chung với trang chính -->
+  <link rel="stylesheet" href="book.css">  <!-- CSS riêng cho form booking -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <h1>💅 Book Your Appointment</h1>
+  <p>Fill in your details and we’ll confirm your appointment soon 💖</p>
+
+  <form id="bookingForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <select name="service" required>
+      <option value="">Select Service</option>
+      <option>Manicure</option>
+      <option>Pedicure</option>
+      <option>Shellac Nails</option>
+      <option>Acrylic Extensions</option>
+      <option>Biogel</option>
+      <option>Waxing</option>
+      <option>Threading</option>
+      <option>Lash Lift</option>
+      <option>Eyelash Extension</option>
+    </select>
+    <input type="date" name="date" required>
+    <input type="time" name="time" required>
+    <textarea name="note" placeholder="Any special request?"></textarea>
+    <button type="submit">Book Now</button>
+    <p id="msg"></p>
+  </form>
+
+  <a href="index.html" class="back"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+  <script>
+    const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL';
+    const form = document.getElementById('bookingForm');
+    const msg = document.getElementById('msg');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      msg.textContent = "⏳ Sending...";
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          msg.style.color = 'green';
+          msg.textContent = '✅ Appointment booked! We’ll contact you soon 💕';
+          form.reset();
+        })
+        .catch(error => {
+          msg.style.color = 'red';
+          msg.textContent = '❌ Something went wrong. Please try again!';
+        });
+    });
+  </script>
+</body>
+</html>
