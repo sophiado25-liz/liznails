@@ -3,56 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Appointment | Liz Nails</title>
-  <link rel="stylesheet" href="style.css"> <!-- chung với trang chính -->
-  <link rel="stylesheet" href="book.css">  <!-- CSS riêng cho form booking -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Liz Nails | Book Appointment</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="book.css">
 </head>
 <body>
-  <h1>💅 Book Your Appointment</h1>
-  <p>Fill in your details and we’ll confirm your appointment soon 💖</p>
-
-  <form id="bookingForm">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="tel" name="phone" placeholder="Phone Number" required>
-    <select name="service" required>
-      <option value="">Select Service</option>
-      <option>Manicure</option>
-      <option>Pedicure</option>
-      <option>Shellac Nails</option>
-      <option>Acrylic Extensions</option>
-      <option>Biogel</option>
-      <option>Waxing</option>
-      <option>Threading</option>
-      <option>Lash Lift</option>
-      <option>Eyelash Extension</option>
-    </select>
-    <input type="date" name="date" required>
-    <input type="time" name="time" required>
-    <textarea name="note" placeholder="Any special request?"></textarea>
-    <button type="submit">Book Now</button>
+  <div class="booking-container">
+    <h2>Book Your Appointment</h2>
+    <form id="booking-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <select name="service" required>
+        <option value="">Select Service</option>
+        <option value="Manicure">Manicure</option>
+        <option value="Pedicure">Pedicure</option>
+        <option value="Nail Extension">Nail Extension</option>
+      </select>
+      <input type="date" name="date" required>
+      <input type="time" name="time" required>
+      <textarea name="note" placeholder="Note (optional)"></textarea>
+      <button type="submit">Book Now</button>
+    </form>
     <p id="msg"></p>
-  </form>
-
-  <a href="index.html" class="back"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+  </div>
 
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwNBqq_pHSH5jqeJ2IofKaGrx9Wgiv7FkmnwIK2wNSvqpPqs9mfe6d2NPjI9tJ_Qdeb/exec';
-    const form = document.getElementById('bookingForm');
+    const form = document.getElementById('booking-form');
     const msg = document.getElementById('msg');
+    const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL'; // Thay bằng link Web App Google Script
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      msg.textContent = "⏳ Sending...";
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
-          msg.style.color = 'green';
-          msg.textContent = '✅ Appointment booked! We’ll contact you soon 💕';
+          msg.textContent = "Appointment booked! We'll contact you soon 💕";
           form.reset();
         })
         .catch(error => {
-          msg.style.color = 'red';
-          msg.textContent = '❌ Something went wrong. Please try again!';
+          console.error('Error!', error.message);
+          msg.textContent = "Something went wrong. Please try again!";
         });
     });
   </script>
